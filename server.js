@@ -1,11 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const users = require("./routes/users");
-const profile = require('./routes/profile');
-const posts = require('./routes/posts');
+const profile = require("./routes/profile");
+const posts = require("./routes/posts");
 const passport = require("passport");
 const app = express();
 
@@ -29,8 +29,10 @@ require("./config/passport")(passport);
 
 // Use Routes
 app.use("/api/users", users);
-app.use('/api/profile', profile);
-app.use('/api/posts', posts);
+app.use("/api/profile", profile);
+app.use("/api/posts", posts);
+
+app.get("/", (req, res) => res.json({ success: true }));
 
 const PORT = process.env.PORT || 5001;
 
